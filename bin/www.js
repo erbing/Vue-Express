@@ -1,22 +1,22 @@
-#!/usr/bin/env node
+// #!/usr/bin/env node
 
 /**
  * Module dependencies.
  */
-var config = require('../server/config');
+var config = require("../server/config");
 
-var debug = require('debug')('todo:server');
-var http = require('http');
+var debug = require("debug")("todo:server");
+var http = require("http");
 
-module.exports = function (app) {
-  var port = normalizePort(config.PORT || '8080');
-  app.set('port', port);
+module.exports = function(app) {
+  var port = normalizePort(config.PORT || "8080");
+  app.set("port", port);
 
   var server = http.createServer(app);
   server.listen(port);
-  console.log('Express app http started on port ' + port);
-  server.on('error', onError);
-  server.on('listening', onListening);
+  console.log("Express app http started on port " + port);
+  server.on("error", onError);
+  server.on("listening", onListening);
 
   /**
    * Normalize a port into a number, string, or false.
@@ -38,20 +38,18 @@ module.exports = function (app) {
    * Event listener for HTTP server "error" event.
    */
   function onError(error) {
-    if (error.syscall !== 'listen') {
+    if (error.syscall !== "listen") {
       throw error;
     }
-    var bind = typeof port === 'string'
-      ? 'Pipe ' + port
-      : 'Port ' + port;
+    var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
     // handle specific listen errors with friendly messages
     switch (error.code) {
-      case 'EACCES':
-        console.error(bind + ' requires elevated privileges');
+      case "EACCES":
+        console.error(bind + " requires elevated privileges");
         process.exit(1);
         break;
-      case 'EADDRINUSE':
-        console.error(bind + ' is already in use');
+      case "EADDRINUSE":
+        console.error(bind + " is already in use");
         process.exit(1);
         break;
       default:
@@ -64,10 +62,7 @@ module.exports = function (app) {
    */
   function onListening() {
     var addr = server.address();
-    var bind = typeof addr === 'string'
-      ? 'pipe ' + addr
-      : 'port ' + addr.port;
-    debug('Listening on ' + bind);
+    var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+    debug("Listening on " + bind);
   }
-
-}
+};

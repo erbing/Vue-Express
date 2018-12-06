@@ -6,4 +6,4 @@ require("./server/express")(app);
 app.use(express.static(config.root + "/dist"));
 require("./server/server")(app);
 require("./server/error")(app);
-require("./bin/www")(app);
+require("./bin/www.js")(app);
