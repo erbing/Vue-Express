@@ -1,13 +1,13 @@
 var httpProxy = require("http-proxy");
 var config = require("./config");
-var logger = require("./logger");
+// var logger = require("./logger");
 
 module.exports = function(app) {
   var apiServers = config.API;
 
   var proxy = httpProxy.createProxyServer();
   proxy.on("error", function(e) {
-    logger.error(e);
+    //logger.error(e);
   });
 
   // 服务器部署验证
