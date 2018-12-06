@@ -8,7 +8,8 @@ const config = require("./webpack.dev.config");
 const app = express();
 const compiler = webpack(config);
 
-require("../server/express")(app);
+// require("../server/express")(app);
+
 app.use(
   webpackMiddleware(compiler, {
     noInfo: true,
