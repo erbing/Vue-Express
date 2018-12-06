@@ -22,7 +22,7 @@ app.use(
 );
 app.use(webpackHotMiddleware(compiler));
 
-// require("../server/server")(app);
+require("../server/server")(app);
 require("../server/error")(app);
 require("../bin/www")(app);
 
