@@ -8,7 +8,7 @@ const config = require("./webpack.dev.config");
 const app = express();
 const compiler = webpack(config);
 
-// require("../server/express")(app);
+require("../server/express")(app);
 
 app.use(
   webpackMiddleware(compiler, {
@@ -22,10 +22,22 @@ app.use(
 );
 app.use(webpackHotMiddleware(compiler));
 
-app.get("/", (req, res) => {
-  res.send("hello");
+// require("../server/server")(app);
+require("../server/error")(app);
+require("../bin/www")(app);
+
+// force page reload when html-webpack-plugin template changes
+compiler.plugin("compilation", function(compilation) {
+  compilation.plugin("html-webpack-plugin-after-emit", function(data, cb) {
+    webpackHotMiddleware.publish({ action: "reload" });
+    cb();
+  });
 });
 
-app.listen(3000, () => {
-  console.log("Example app listening on port 3000!");
-});
+// app.get("/", (req, res) => {
+//   res.send("hello");
+// });
+
+// app.listen(3000, () => {
+//   console.log("Example app listening on port 3000!");
+// });
