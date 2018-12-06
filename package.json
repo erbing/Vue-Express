@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/erbing/Vue-Express#readme",
   "dependencies": {
-    "vue": "^2.5.17"
+    "babel-loader": "^8.0.4",
+    "vue": "^2.5.17",
+    "vue-loader": "^15.4.2"
   },
   "devDependencies": {
     "express": "^4.16.4",
