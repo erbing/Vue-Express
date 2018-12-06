@@ -1,8 +1,9 @@
-import Vue from "vue";
+var express = require("express");
+var config = require("./server/config");
 
-import Index from "./pages/index";
-
-new Vue({
-  el: "#app",
-  render: h => h(Index)
-});
+var app = express();
+require("./server/express")(app);
+app.use(express.static(config.root + "/dist"));
+require("./server/server")(app);
+require("./server/error")(app);
+require("./bin/www")(app);
