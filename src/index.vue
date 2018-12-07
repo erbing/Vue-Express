@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>
-            this is index page
+            this is index pagesssss
         </h3>
     </div>
 </template>

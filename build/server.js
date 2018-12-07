@@ -20,10 +20,11 @@ app.use(
     }
   })
 );
+
 app.use(webpackHotMiddleware(compiler));
 
 require("../server/server")(app);
-require("../server/error")(app);
+// require("../server/error")(app);
 require("../bin/www")(app);
 
 // force page reload when html-webpack-plugin template changes

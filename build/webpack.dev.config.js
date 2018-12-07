@@ -17,7 +17,7 @@ const vueLoaderConfig = {
 
 module.exports = {
   entry: {
-    app: resolve("app.js")
+    app: resolve("src/main.js")
   },
   output: {
     path: resolve("dist"),
