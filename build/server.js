@@ -7,6 +7,7 @@ const config = require("./webpack.dev.config");
 
 const app = express();
 const compiler = webpack(config);
+const resolve = dir => path.join(__dirname, "..", dir);
 
 require("../server/express")(app);
 
@@ -24,7 +25,7 @@ app.use(
 app.use(webpackHotMiddleware(compiler));
 
 require("../server/server")(app);
-// require("../server/error")(app);
+require("../server/error")(app);
 require("../bin/www")(app);
 
 // force page reload when html-webpack-plugin template changes
@@ -35,9 +36,9 @@ compiler.plugin("compilation", function(compilation) {
   });
 });
 
-// app.get("/", (req, res) => {
-//   res.send("hello");
-// });
+app.get("/", (req, res) => {
+  res.send(resolve("./index.html"));
+});
 
 // app.listen(3000, () => {
 //   console.log("Example app listening on port 3000!");
